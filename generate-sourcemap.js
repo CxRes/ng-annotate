@@ -101,7 +101,7 @@ function compareLoc(a, b) {
 }
 
 module.exports = function generateSourcemap(result, src, nodePositions, fragments, mapOpts) {
-    const existingMap = convertSourceMap.fromSource(src);
+    const existingMap = mapOpts.inMap ? convertSourceMap.fromSource(mapOpts.inMap) : convertSourceMap.fromSource(src);
     const existingMapObject = existingMap && existingMap.toObject();
     const inFile = (existingMapObject && existingMapObject.file) || mapOpts.inFile || "source.js";
     const sourceRoot = (existingMapObject && existingMapObject.sourceRoot) || mapOpts.sourceRoot;
